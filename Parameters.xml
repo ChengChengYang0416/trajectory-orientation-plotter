@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Parameters>
+	<Filename>Auto_P0_XYZABC.txt</Filename>
+	<UnitConvert>1000</UnitConvert>
+	<SamplingInterval>50</SamplingInterval>
+	<XAxisLower>100</XAxisLower>
+	<XAxisUpper>400</XAxisUpper>
+	<YAxisLower>-200</YAxisLower>
+	<YAxisUpper>200</YAxisUpper>
+	<ZAxisLower>400</ZAxisLower>
+	<ZAxisUpper>700</ZAxisUpper>
+</Parameters>
