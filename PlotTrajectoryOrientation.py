@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import xml.etree.ElementTree as ET
+from scipy.spatial.transform import Rotation as R
 
 # read parameters from XML
 tree = ET.parse( 'Parameters.xml' )
@@ -39,7 +40,7 @@ Pose = np.loadtxt( Filename, delimiter =' ', usecols = ( 0, 1, 2, 3, 4, 5 ), unp
 # convert the unit from BLU to mm
 Pose /= UnitConvert
 
-# list for orientation
+# list for trajectory and orientation
 X = []
 Y = []
 Z = []
@@ -53,40 +54,18 @@ OrientationZX = []
 OrientationZY = []
 OrientationZZ = []
 
-# rotation matrix
-def Rx( theta ):
-    theta = np.deg2rad( theta )
-    return np.matrix( [ [ 1,               0,                0 ],
-                        [ 0, np.cos( theta ), -np.sin( theta ) ],
-                        [ 0, np.sin( theta ),  np.cos( theta ) ] ] )
-
-def Ry( theta ):
-    theta = np.deg2rad( theta )
-    return np.matrix( [ [  np.cos( theta ), 0, np.sin( theta ) ],
-                        [                0, 1,               0 ],
-                        [ -np.sin( theta ), 0, np.cos( theta ) ] ] )
-
-def Rz( theta ):
-    theta = np.deg2rad( theta )
-    return np.matrix( [ [ np.cos( theta ), -np.sin( theta ), 0 ],
-                        [ np.sin( theta ),  np.cos( theta ), 0 ],
-                        [               0,                0, 1 ] ] )
-
 # get orientation by rotation matrix
 for i in range( 0, len( Pose[ 0 ] ), SamplingInterval ):
-    RX = Rx( Pose[ 3 ][ i ] )
-    RY = Ry( Pose[ 4 ][ i ] )
-    RZ = Rz( Pose[ 5 ][ i ] )
-    R = RX * RY * RZ
-    OrientationXX.append( R.item( 0, 0 ) )
-    OrientationXY.append( R.item( 1, 0 ) )
-    OrientationXZ.append( R.item( 2, 0 ) )
-    OrientationYX.append( R.item( 0, 1 ) )
-    OrientationYY.append( R.item( 1, 1 ) )
-    OrientationYZ.append( R.item( 2, 1 ) )
-    OrientationZX.append( R.item( 0, 2 ) )
-    OrientationZY.append( R.item( 1, 2 ) )
-    OrientationZZ.append( R.item( 2, 2 ) )
+    r = R.from_euler( 'zyx', [ Pose[ 3 ][ i ], Pose[ 4 ][ i ], Pose[ 5 ][ i ] ], degrees = True )
+    OrientationXX.append( r.as_matrix()[ 0 ][ 0 ] )
+    OrientationXY.append( r.as_matrix()[ 1 ][ 0 ] )
+    OrientationXZ.append( r.as_matrix()[ 2 ][ 0 ] )
+    OrientationYX.append( r.as_matrix()[ 0 ][ 1 ] )
+    OrientationYY.append( r.as_matrix()[ 1 ][ 1 ] )
+    OrientationYZ.append( r.as_matrix()[ 2 ][ 1 ] )
+    OrientationZX.append( r.as_matrix()[ 0 ][ 2 ] )
+    OrientationZY.append( r.as_matrix()[ 1 ][ 2 ] )
+    OrientationZZ.append( r.as_matrix()[ 2 ][ 2 ] )
     X.append( Pose[ 0 ][ i ] )
     Y.append( Pose[ 1 ][ i ] )
     Z.append( Pose[ 2 ][ i ] )
