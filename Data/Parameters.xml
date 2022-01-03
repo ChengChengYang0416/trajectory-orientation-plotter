@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Parameters>
-	<Filename>Auto_P0_XYZABC.txt</Filename>
+	<PoseDataFilePath>Data\\Auto_P0_XYZABC.txt</PoseDataFilePath>
 	<UnitConvert>1000</UnitConvert>
 	<SamplingInterval>50</SamplingInterval>
 	<XAxisLower>100</XAxisLower>

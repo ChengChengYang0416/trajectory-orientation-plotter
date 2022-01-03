@@ -1,15 +1,15 @@
 import xml.etree.ElementTree as ET
 
-def GetPlotterParameters():
+def GetPlotterParameters( ParametersFilePath ):
     # initialize dictionary
-    Parameters = { 'Filename' : 0, 'UnitConvert' : 0, 'SamplingInterval' : 0, 'XAxisLower' : 0, 'XAxisUpper' : 0, 'YAxisLower' : 0, 'YAxisUpper' : 0, 'ZAxisLower' : 0, 'ZAxisUpper' : 0 }
+    Parameters = { 'PoseDataFilePath' : 0, 'UnitConvert' : 0, 'SamplingInterval' : 0, 'XAxisLower' : 0, 'XAxisUpper' : 0, 'YAxisLower' : 0, 'YAxisUpper' : 0, 'ZAxisLower' : 0, 'ZAxisUpper' : 0 }
 
     # read parameters from XML
-    tree = ET.parse( 'Parameters.xml' )
+    tree = ET.parse( ParametersFilePath )
     root = tree.getroot()
     for child in root:
-        if child.tag == 'Filename':
-            Parameters[ 'Filename' ] = child.text
+        if child.tag == 'PoseDataFilePath':
+            Parameters[ 'PoseDataFilePath' ] = child.text
 
         if child.tag == 'UnitConvert':
             Parameters[ 'UnitConvert' ] = int( child.text )

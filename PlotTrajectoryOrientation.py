@@ -4,10 +4,11 @@ from Modules import PoseDataLoader
 from Modules import DataProcessor
 
 # read parameters from XML
-Parameters = PlotterParametersLoader.GetPlotterParameters()
+ParametersFilePath = 'Data\\Parameters.xml'
+Parameters = PlotterParametersLoader.GetPlotterParameters( ParametersFilePath )
 
 # load the data from txt file
-Pose = PoseDataLoader.GetPoseData( Parameters[ 'Filename' ] )
+Pose = PoseDataLoader.GetPoseData( Parameters[ 'PoseDataFilePath' ] )
 
 # convert the unit from BLU to mm
 Pose /= Parameters[ 'UnitConvert' ]
