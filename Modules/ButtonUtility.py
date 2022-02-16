@@ -10,6 +10,34 @@ def ButtonOpenClick( EntryOpenFile ):
     EntryOpenFile.delete( 0, 'end' )
     EntryOpenFile.insert( 0, Filename.name )
 
+def ButtonLoadParamClick( EntryLoadParam, EntryXAxisLower, EntryXAxisUpper, EntryYAxisLower, EntryYAxisUpper, EntryZAxisLower, EntryZAxisUpper, EntryConvertUnit, EntrySampleInterval ):
+	# read parameter xml file path
+	Filename = filedialog.askopenfile( title = "Select a file", filetypes = ( ( "xml file", "*.xml" ), ( "all file", "*.*" ) ) )
+	EntryLoadParam.delete( 0, 'end' )
+	EntryLoadParam.insert( 0, Filename.name )
+
+	# read parameters from XML
+	ParametersFilePath = 'Data\\Parameters.xml'
+	Parameters = PlotterParametersLoader.GetPlotterParameters( ParametersFilePath )
+
+	# fill entry with xml parameters
+	EntryXAxisLower.delete( 0, 'end' )
+	EntryXAxisLower.insert( 0, Parameters[ 'XAxisLower' ] )
+	EntryXAxisUpper.delete( 0, 'end' )
+	EntryXAxisUpper.insert( 0, Parameters[ 'XAxisUpper' ] )
+	EntryYAxisLower.delete( 0, 'end' )
+	EntryYAxisLower.insert( 0, Parameters[ 'YAxisLower' ] )
+	EntryYAxisUpper.delete( 0, 'end' )
+	EntryYAxisUpper.insert( 0, Parameters[ 'YAxisUpper' ] )
+	EntryZAxisLower.delete( 0, 'end' )
+	EntryZAxisLower.insert( 0, Parameters[ 'ZAxisLower' ] )
+	EntryZAxisUpper.delete( 0, 'end' )
+	EntryZAxisUpper.insert( 0, Parameters[ 'ZAxisUpper' ] )
+	EntryConvertUnit.delete( 0, 'end' )
+	EntryConvertUnit.insert( 0, Parameters[ 'UnitConvert' ] )
+	EntrySampleInterval.delete( 0, 'end' )
+	EntrySampleInterval.insert( 0, Parameters[ 'SamplingInterval' ] )
+
 def ButtonPlot( FilePath ):
     # read parameters from XML
     ParametersFilePath = 'Data\\Parameters.xml'
