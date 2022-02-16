@@ -10,10 +10,8 @@ Win = tk.Tk()
 Win.title( "Plotter Gui" )
 
 # set geometry of window ( width x height )
-Win.geometry( "430x300" )
-Win.minsize( width = 400, height = 300 )
-Win.maxsize( width = 800, height = 600 )
-Win.resizable( True, True )
+Win.geometry( "430x277" )
+Win.resizable( False, False )
 
 # color, transparency, pin on top
 Win.config( background = "#C0C0C0" )
@@ -97,8 +95,8 @@ ButtonLoadParam.config( command = lambda : ButtonUtility.ButtonLoadParamClick( E
 ButtonLoadParam.place( x = 10, y = 45 )
 
 # button for starting to plot
-ButtonPlot = tk.Button( text = "Plot", image = Pixel, background = "#FFFFFF", width = 88, height = 20, compound = "c" )
+ButtonPlot = tk.Button( text = "Plot", image = Pixel, background = "#FFFFFF", width = 405, height = 20, compound = "c" )
 ButtonPlot.config( command = lambda : ButtonUtility.ButtonPlot( StringFilePath.get(), int( StringXAxisLower.get() ), int( StringXAxisUpper.get() ), int( StringYAxisLower.get() ), int( StringYAxisUpper.get() ), int( StringZAxisLower.get() ), int( StringZAxisUpper.get() ), int( StringConvertUnit.get() ), int( StringSampleInterval.get() ) ) )
-ButtonPlot.place( x = 10, y = 250 )
+ButtonPlot.place( x = 10, y = 238 )
 
 Win.mainloop()
