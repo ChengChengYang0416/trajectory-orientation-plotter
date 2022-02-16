@@ -18,30 +18,34 @@ Win.config( background = "#C0C0C0" )
 Win.attributes( "-topmost", True )
 #------------------- end of basic setting -------------------#
 
+# frame for parameters
+FrameParam = tk.LabelFrame( width = 410, height = 150, text = "parameters" )
+FrameParam.place( x = 10, y = 80 )
+
 # label
-LabelXAxisLower = tk.Label( text = "XAxisLower" )
-LabelXAxisLower.place( x = 10, y = 80, width = 95, height = 28 )
+LabelXAxisLower = tk.Label( FrameParam, text = "XAxisLower" )
+LabelXAxisLower.place( x = 0, y = 0, width = 95, height = 28 )
 
-LabelXAxisUpper = tk.Label( text = "XAxisUpper" )
-LabelXAxisUpper.place( x = 220, y = 80, width = 95, height = 28 )
+LabelXAxisUpper = tk.Label( FrameParam, text = "XAxisUpper" )
+LabelXAxisUpper.place( x = 200, y = 0, width = 95, height = 28 )
 
-LabelYAxisLower = tk.Label( text = "YAxisLower" )
-LabelYAxisLower.place( x = 10, y = 120, width = 95, height = 28 )
+LabelYAxisLower = tk.Label( FrameParam, text = "YAxisLower" )
+LabelYAxisLower.place( x = 0, y = 32, width = 95, height = 28 )
 
-LabelYAxisUpper = tk.Label( text = "YAxisUpper" )
-LabelYAxisUpper.place( x = 220, y = 120, width = 95, height = 28 )
+LabelYAxisUpper = tk.Label( FrameParam, text = "YAxisUpper" )
+LabelYAxisUpper.place( x = 200, y = 32, width = 95, height = 28 )
 
-LabelZAxisLower = tk.Label( text = "ZAxisLower" )
-LabelZAxisLower.place( x = 10, y = 160, width = 95, height = 28 )
+LabelZAxisLower = tk.Label( FrameParam, text = "ZAxisLower" )
+LabelZAxisLower.place( x = 0, y = 64, width = 95, height = 28 )
 
-LabelZAxisUpper = tk.Label( text = "ZAxisUpper" )
-LabelZAxisUpper.place( x = 220, y = 160, width = 95, height = 28 )
+LabelZAxisUpper = tk.Label( FrameParam, text = "ZAxisUpper" )
+LabelZAxisUpper.place( x = 200, y = 64, width = 95, height = 28 )
 
-LabelConvertUnit = tk.Label( text = "ConvertUnit" )
-LabelConvertUnit.place( x = 10, y = 200, width = 95, height = 28 )
+LabelConvertUnit = tk.Label( FrameParam, text = "ConvertUnit" )
+LabelConvertUnit.place( x = 0, y = 96, width = 95, height = 28 )
 
-LabelSampleInterval = tk.Label( text = "SampleInterval" )
-LabelSampleInterval.place( x = 220, y = 200, width = 95, height = 28 )
+LabelSampleInterval = tk.Label( FrameParam, text = "SampleInterval" )
+LabelSampleInterval.place( x = 200, y = 96, width = 95, height = 28 )
 
 # entry
 StringFilePath = tk.StringVar()
@@ -53,36 +57,36 @@ EntryLoadParam = tk.Entry( textvariable = StringLoadParam )
 EntryLoadParam.place( x = 110, y = 45, width = 310, height = 28 )
 
 StringXAxisLower = tk.StringVar()
-EntryXAxisLower = tk.Entry( textvariable = StringXAxisLower )
-EntryXAxisLower.place( x = 110, y = 80, width = 100, height = 28 )
+EntryXAxisLower = tk.Entry( FrameParam, textvariable = StringXAxisLower )
+EntryXAxisLower.place( x = 97, y = 0, width = 100, height = 28 )
 
 StringXAxisUpper = tk.StringVar()
-EntryXAxisUpper = tk.Entry( textvariable = StringXAxisUpper )
-EntryXAxisUpper.place( x = 320, y = 80, width = 100, height = 28 )
+EntryXAxisUpper = tk.Entry( FrameParam, textvariable = StringXAxisUpper )
+EntryXAxisUpper.place( x = 300, y = 0, width = 100, height = 28 )
 
 StringYAxisLower = tk.StringVar()
-EntryYAxisLower = tk.Entry( textvariable = StringYAxisLower )
-EntryYAxisLower.place( x = 110, y = 120, width = 100, height = 28 )
+EntryYAxisLower = tk.Entry( FrameParam, textvariable = StringYAxisLower )
+EntryYAxisLower.place( x = 97, y = 32, width = 100, height = 28 )
 
 StringYAxisUpper = tk.StringVar()
-EntryYAxisUpper = tk.Entry( textvariable = StringYAxisUpper )
-EntryYAxisUpper.place( x = 320, y = 120, width = 100, height = 28 )
+EntryYAxisUpper = tk.Entry( FrameParam, textvariable = StringYAxisUpper )
+EntryYAxisUpper.place( x = 300, y = 32, width = 100, height = 28 )
 
 StringZAxisLower = tk.StringVar()
-EntryZAxisLower = tk.Entry( textvariable = StringZAxisLower )
-EntryZAxisLower.place( x = 110, y = 160, width = 100, height = 28 )
+EntryZAxisLower = tk.Entry( FrameParam, textvariable = StringZAxisLower )
+EntryZAxisLower.place( x = 97, y = 64, width = 100, height = 28 )
 
 StringZAxisUpper = tk.StringVar()
-EntryZAxisUpper = tk.Entry( textvariable = StringZAxisUpper )
-EntryZAxisUpper.place( x = 320, y = 160, width = 100, height = 28 )
+EntryZAxisUpper = tk.Entry( FrameParam, textvariable = StringZAxisUpper )
+EntryZAxisUpper.place( x = 300, y = 64, width = 100, height = 28 )
 
 StringConvertUnit = tk.StringVar()
-EntryConvertUnit = tk.Entry( textvariable = StringConvertUnit )
-EntryConvertUnit.place( x = 110, y = 200, width = 100, height = 28 )
+EntryConvertUnit = tk.Entry( FrameParam, textvariable = StringConvertUnit )
+EntryConvertUnit.place( x = 97, y = 96, width = 100, height = 28 )
 
 StringSampleInterval = tk.StringVar()
-EntrySampleInterval = tk.Entry( textvariable = StringSampleInterval )
-EntrySampleInterval.place( x = 320, y = 200, width = 100, height = 28 )
+EntrySampleInterval = tk.Entry( FrameParam, textvariable = StringSampleInterval )
+EntrySampleInterval.place( x = 300, y = 96, width = 100, height = 28 )
 
 # button for open filedialog
 Pixel = tk.PhotoImage( width = 1, height = 1 )
