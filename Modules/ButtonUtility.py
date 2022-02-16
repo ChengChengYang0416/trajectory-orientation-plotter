@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import filedialog
-from tokenize import String
 import matplotlib.pyplot as plt
 from Modules import PlotterParametersLoader
 from Modules import PoseDataLoader
