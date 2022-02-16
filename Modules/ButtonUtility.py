@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+from tokenize import String
 import matplotlib.pyplot as plt
 from Modules import PlotterParametersLoader
 from Modules import PoseDataLoader
@@ -38,19 +39,15 @@ def ButtonLoadParamClick( EntryLoadParam, EntryXAxisLower, EntryXAxisUpper, Entr
 	EntrySampleInterval.delete( 0, 'end' )
 	EntrySampleInterval.insert( 0, Parameters[ 'SamplingInterval' ] )
 
-def ButtonPlot( FilePath ):
-    # read parameters from XML
-    ParametersFilePath = 'Data\\Parameters.xml'
-    Parameters = PlotterParametersLoader.GetPlotterParameters( ParametersFilePath )
-
+def ButtonPlot( FilePath, XAxisLower, XAxisUpper, YAxisLower, YAxisUpper, ZAxisLower, ZAxisUpper, ConvertUnit, SampleInterval ):
     # load the data from txt file
     Pose = PoseDataLoader.GetPoseData( FilePath )
 
     # convert the unit from BLU to mm
-    Pose /= Parameters[ 'UnitConvert' ]
+    Pose /= ConvertUnit
 
     # get sampled position and orientation
-    SampledPose = DataProcessor.GetSampledPositionAndOrientation( Pose, Parameters[ 'SamplingInterval' ] )
+    SampledPose = DataProcessor.GetSampledPositionAndOrientation( Pose, SampleInterval )
 
     # create figure
     fig = plt.figure()
@@ -61,9 +58,9 @@ def ButtonPlot( FilePath ):
     plt.ylabel( 'Y' )
 
     # set the boundary
-    xlim = [ Parameters[ 'XAxisLower' ], Parameters[ 'XAxisUpper' ] ]
-    ylim = [ Parameters[ 'YAxisLower' ], Parameters[ 'YAxisUpper' ] ]
-    zlim = [ Parameters[ 'ZAxisLower' ], Parameters[ 'ZAxisUpper' ] ]
+    xlim = [ XAxisLower, XAxisUpper ]
+    ylim = [ YAxisLower, YAxisUpper ]
+    zlim = [ ZAxisLower, ZAxisUpper ]
     ax.set_xlim3d( xlim )
     ax.set_ylim3d( ylim )
     ax.set_zlim3d( zlim )

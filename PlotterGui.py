@@ -91,12 +91,14 @@ Pixel = tk.PhotoImage( width = 1, height = 1 )
 ButtonOpenFile = tk.Button( text = "Open File", image = Pixel, background = "#FFFFFF", width = 88, height = 20, compound = "c", command = lambda : ButtonUtility.ButtonOpenClick( EntryOpenFile ) )
 ButtonOpenFile.place( x = 10, y = 10 )
 
+# button for loading parameters
 ButtonLoadParam = tk.Button( text = "Load Param", image = Pixel, background = "#FFFFFF", width = 88, height = 20, compound = "c" )
 ButtonLoadParam.config( command = lambda : ButtonUtility.ButtonLoadParamClick( EntryLoadParam, EntryXAxisLower, EntryXAxisUpper, EntryYAxisLower, EntryYAxisUpper, EntryZAxisLower, EntryZAxisUpper, EntryConvertUnit, EntrySampleInterval ) )
 ButtonLoadParam.place( x = 10, y = 45 )
 
 # button for starting to plot
-ButtonPlot = tk.Button( text = "Plot", image = Pixel, background = "#FFFFFF", width = 88, height = 20, compound = "c", command = lambda : ButtonUtility.ButtonPlot( StringFilePath.get() ) )
+ButtonPlot = tk.Button( text = "Plot", image = Pixel, background = "#FFFFFF", width = 88, height = 20, compound = "c" )
+ButtonPlot.config( command = lambda : ButtonUtility.ButtonPlot( StringFilePath.get(), int( StringXAxisLower.get() ), int( StringXAxisUpper.get() ), int( StringYAxisLower.get() ), int( StringYAxisUpper.get() ), int( StringZAxisLower.get() ), int( StringZAxisUpper.get() ), int( StringConvertUnit.get() ), int( StringSampleInterval.get() ) ) )
 ButtonPlot.place( x = 10, y = 250 )
 
 Win.mainloop()
