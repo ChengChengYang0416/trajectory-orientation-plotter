@@ -18,7 +18,7 @@ def ButtonLoadParamClick( EntryLoadParam, EntryXAxisLower, EntryXAxisUpper, Entr
 	EntryLoadParam.insert( 0, Filename.name )
 
 	# read parameters from XML
-	ParametersFilePath = 'Data\\Parameters.xml'
+	ParametersFilePath = Filename.name
 	Parameters = PlotterParametersLoader.GetPlotterParameters( ParametersFilePath )
 
 	# fill entry with xml parameters
