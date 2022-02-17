@@ -7,12 +7,18 @@ from Modules import DataProcessor
 
 def ButtonOpenClick( EntryOpenFile ):
     Filename = filedialog.askopenfile( title = "Select a file", filetypes = ( ( "txt file", "*.txt" ), ( "all file", "*.*" ) ) )
+    if Filename is None:
+        return
+
     EntryOpenFile.delete( 0, 'end' )
     EntryOpenFile.insert( 0, Filename.name )
 
 def ButtonLoadParamClick( EntryLoadParam, EntryXAxisLower, EntryXAxisUpper, EntryYAxisLower, EntryYAxisUpper, EntryZAxisLower, EntryZAxisUpper, EntryConvertUnit, EntrySampleInterval ):
 	# read parameter xml file path
 	Filename = filedialog.askopenfile( title = "Select a file", filetypes = ( ( "xml file", "*.xml" ), ( "all file", "*.*" ) ) )
+	if Filename is None:
+		return
+		
 	EntryLoadParam.delete( 0, 'end' )
 	EntryLoadParam.insert( 0, Filename.name )
 
