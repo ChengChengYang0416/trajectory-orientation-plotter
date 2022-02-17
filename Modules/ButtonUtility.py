@@ -54,6 +54,7 @@ def ButtonPlot( FilePath, XAxisLower, XAxisUpper, YAxisLower, YAxisUpper, ZAxisL
 	SampledPose = DataProcessor.GetSampledPositionAndOrientation( Pose, SampleInterval )
 
 	# create figure
+	fig = plt.figure()
 	ax = plt.axes( projection = '3d' )
 
 	# label of axis
