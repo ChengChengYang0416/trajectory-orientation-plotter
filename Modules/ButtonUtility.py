@@ -1,4 +1,3 @@
-import tkinter as tk
 from tkinter import filedialog
 import matplotlib.pyplot as plt
 from Modules import PlotterParametersLoader
@@ -18,7 +17,7 @@ def ButtonLoadParamClick( EntryLoadParam, EntryXAxisLower, EntryXAxisUpper, Entr
 	Filename = filedialog.askopenfile( title = "Select a file", filetypes = ( ( "xml file", "*.xml" ), ( "all file", "*.*" ) ) )
 	if Filename is None:
 		return
-		
+
 	EntryLoadParam.delete( 0, 'end' )
 	EntryLoadParam.insert( 0, Filename.name )
 
@@ -55,7 +54,6 @@ def ButtonPlot( FilePath, XAxisLower, XAxisUpper, YAxisLower, YAxisUpper, ZAxisL
 	SampledPose = DataProcessor.GetSampledPositionAndOrientation( Pose, SampleInterval )
 
 	# create figure
-	fig = plt.figure()
 	ax = plt.axes( projection = '3d' )
 
 	# label of axis
