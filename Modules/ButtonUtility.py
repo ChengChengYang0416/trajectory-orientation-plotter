@@ -6,12 +6,12 @@ from Modules import PoseDataLoader
 from Modules import DataProcessor
 
 def ButtonOpenClick( EntryOpenFile ):
-    Filename = filedialog.askopenfile( title = "Select a file", filetypes = ( ( "txt file", "*.txt" ), ( "all file", "*.*" ) ) )
-    if Filename is None:
-        return
+	Filename = filedialog.askopenfile( title = "Select a file", filetypes = ( ( "txt file", "*.txt" ), ( "all file", "*.*" ) ) )
+	if Filename is None:
+		return
 
-    EntryOpenFile.delete( 0, 'end' )
-    EntryOpenFile.insert( 0, Filename.name )
+	EntryOpenFile.delete( 0, 'end' )
+	EntryOpenFile.insert( 0, Filename.name )
 
 def ButtonLoadParamClick( EntryLoadParam, EntryXAxisLower, EntryXAxisUpper, EntryYAxisLower, EntryYAxisUpper, EntryZAxisLower, EntryZAxisUpper, EntryConvertUnit, EntrySampleInterval ):
 	# read parameter xml file path
@@ -45,38 +45,38 @@ def ButtonLoadParamClick( EntryLoadParam, EntryXAxisLower, EntryXAxisUpper, Entr
 	EntrySampleInterval.insert( 0, Parameters[ 'SamplingInterval' ] )
 
 def ButtonPlot( FilePath, XAxisLower, XAxisUpper, YAxisLower, YAxisUpper, ZAxisLower, ZAxisUpper, ConvertUnit, SampleInterval ):
-    # load the data from txt file
-    Pose = PoseDataLoader.GetPoseData( FilePath )
+	# load the data from txt file
+	Pose = PoseDataLoader.GetPoseData( FilePath )
 
-    # convert the unit from BLU to mm
-    Pose /= ConvertUnit
+	# convert the unit from BLU to mm
+	Pose /= ConvertUnit
 
-    # get sampled position and orientation
-    SampledPose = DataProcessor.GetSampledPositionAndOrientation( Pose, SampleInterval )
+	# get sampled position and orientation
+	SampledPose = DataProcessor.GetSampledPositionAndOrientation( Pose, SampleInterval )
 
-    # create figure
-    fig = plt.figure()
-    ax = plt.axes( projection = '3d' )
+	# create figure
+	fig = plt.figure()
+	ax = plt.axes( projection = '3d' )
 
-    # label of axis
-    plt.xlabel( 'X' )
-    plt.ylabel( 'Y' )
+	# label of axis
+	plt.xlabel( 'X' )
+	plt.ylabel( 'Y' )
 
-    # set the boundary
-    xlim = [ XAxisLower, XAxisUpper ]
-    ylim = [ YAxisLower, YAxisUpper ]
-    zlim = [ ZAxisLower, ZAxisUpper ]
-    ax.set_xlim3d( xlim )
-    ax.set_ylim3d( ylim )
-    ax.set_zlim3d( zlim )
+	# set the boundary
+	xlim = [ XAxisLower, XAxisUpper ]
+	ylim = [ YAxisLower, YAxisUpper ]
+	zlim = [ ZAxisLower, ZAxisUpper ]
+	ax.set_xlim3d( xlim )
+	ax.set_ylim3d( ylim )
+	ax.set_zlim3d( zlim )
 
-    # set the aspect ration of x, y, z to 1:1:1
-    ax.set_box_aspect( [ 1, 1, 1 ] )
+	# set the aspect ration of x, y, z to 1:1:1
+	ax.set_box_aspect( [ 1, 1, 1 ] )
 
-    # plot the orientation
-    ax.quiver( SampledPose[ 'X' ], SampledPose[ 'Y' ], SampledPose[ 'Z' ], SampledPose[ 'OrientationXX' ], SampledPose[ 'OrientationXY' ], SampledPose[ 'OrientationXZ' ], length = 10, normalize = True, color = 'r' )
-    ax.quiver( SampledPose[ 'X' ], SampledPose[ 'Y' ], SampledPose[ 'Z' ], SampledPose[ 'OrientationYX' ], SampledPose[ 'OrientationYY' ], SampledPose[ 'OrientationYZ' ], length = 10, normalize = True, color = 'g' )
-    ax.quiver( SampledPose[ 'X' ], SampledPose[ 'Y' ], SampledPose[ 'Z' ], SampledPose[ 'OrientationZX' ], SampledPose[ 'OrientationZY' ], SampledPose[ 'OrientationZZ' ], length = 10, normalize = True, color = 'b' )
+	# plot the orientation
+	ax.quiver( SampledPose[ 'X' ], SampledPose[ 'Y' ], SampledPose[ 'Z' ], SampledPose[ 'OrientationXX' ], SampledPose[ 'OrientationXY' ], SampledPose[ 'OrientationXZ' ], length = 10, normalize = True, color = 'r' )
+	ax.quiver( SampledPose[ 'X' ], SampledPose[ 'Y' ], SampledPose[ 'Z' ], SampledPose[ 'OrientationYX' ], SampledPose[ 'OrientationYY' ], SampledPose[ 'OrientationYZ' ], length = 10, normalize = True, color = 'g' )
+	ax.quiver( SampledPose[ 'X' ], SampledPose[ 'Y' ], SampledPose[ 'Z' ], SampledPose[ 'OrientationZX' ], SampledPose[ 'OrientationZY' ], SampledPose[ 'OrientationZZ' ], length = 10, normalize = True, color = 'b' )
 
-    # plot
-    plt.show()
+	# plot
+	plt.show()
