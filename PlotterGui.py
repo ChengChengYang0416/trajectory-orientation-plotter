@@ -1,5 +1,6 @@
 import tkinter as tk
 from Modules import ButtonUtility
+from Modules.ButtonUtility import CButtonUtility
 
 # build main window
 Win = tk.Tk()
@@ -110,6 +111,9 @@ EntrySampleInterval.place( x = 300, y = 96, width = 100, height = 28 )
 #------------------- end of entry -------------------#
 
 #------------------- button -------------------#
+# button object
+ButtonUtility = CButtonUtility()
+
 # button for open filedialog
 Pixel = tk.PhotoImage( width = 1, height = 1 )
 ButtonOpenFile = tk.Button( text = "Open File", image = Pixel, background = "#FFFFFF", width = 88, height = 20, compound = "c", command = lambda : ButtonUtility.ButtonOpenClick( EntryOpenFile ) )
