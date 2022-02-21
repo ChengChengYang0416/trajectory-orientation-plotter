@@ -5,13 +5,17 @@
    - Sampling interval
    - Boundary of axis
 
-- The file name and path is **Auto_P0_XYZABC.txt** default
+- Gui specification
+   - Main window
+
+     ![](Figures/gui.png)
+   - Click "Open File" button to load file for pose data
+   - Click "Load Param" button to load parameters for plotting
+   - Click "Plot" to plot the trajectory and the orientation
+   - The file path and the parameters for plotting can be modified in the entry
 
 ## Usage
 - Plot with python
   ```
-  python PlotTrajectoryOrientation.py
+  python PlotterGuiMain.py
   ```
-  
-- Plot with MATLAB
-   - Run PlotTrajectoryOrientation.m
