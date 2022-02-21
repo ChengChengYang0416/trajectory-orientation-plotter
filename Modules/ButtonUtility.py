@@ -1,8 +1,8 @@
 from tkinter import filedialog
-import matplotlib.pyplot as plt
 from Modules.PlotterParametersLoader import CPlotterParametersLoader
 from Modules.PoseDataLoader import CPoseDataLoader
 from Modules.DataProcessor import CDataProcessor
+from Modules.TrajPlotter import CTrajPlotter
 
 class CButtonUtility:
 	def ButtonOpenClick( self, EntryOpenFile ):
@@ -57,29 +57,6 @@ class CButtonUtility:
 		DataProcessor = CDataProcessor()
 		SampledPose = DataProcessor.GetSampledPositionAndOrientation( Pose, SampleInterval )
 
-		# create figure
-		fig = plt.figure()
-		ax = plt.axes( projection = '3d' )
-
-		# label of axis
-		plt.xlabel( 'X' )
-		plt.ylabel( 'Y' )
-
-		# set the boundary
-		xlim = [ XAxisLower, XAxisUpper ]
-		ylim = [ YAxisLower, YAxisUpper ]
-		zlim = [ ZAxisLower, ZAxisUpper ]
-		ax.set_xlim3d( xlim )
-		ax.set_ylim3d( ylim )
-		ax.set_zlim3d( zlim )
-
-		# set the aspect ration of x, y, z to 1:1:1
-		ax.set_box_aspect( [ 1, 1, 1 ] )
-
-		# plot the orientation
-		ax.quiver( SampledPose[ 'X' ], SampledPose[ 'Y' ], SampledPose[ 'Z' ], SampledPose[ 'OrientationXX' ], SampledPose[ 'OrientationXY' ], SampledPose[ 'OrientationXZ' ], length = 10, normalize = True, color = 'r' )
-		ax.quiver( SampledPose[ 'X' ], SampledPose[ 'Y' ], SampledPose[ 'Z' ], SampledPose[ 'OrientationYX' ], SampledPose[ 'OrientationYY' ], SampledPose[ 'OrientationYZ' ], length = 10, normalize = True, color = 'g' )
-		ax.quiver( SampledPose[ 'X' ], SampledPose[ 'Y' ], SampledPose[ 'Z' ], SampledPose[ 'OrientationZX' ], SampledPose[ 'OrientationZY' ], SampledPose[ 'OrientationZZ' ], length = 10, normalize = True, color = 'b' )
-
-		# plot
-		plt.show()
+		# plot trajectory and orientation
+		TrajPlotter = CTrajPlotter()
+		TrajPlotter.PlotTrajectory( SampledPose, XAxisLower, XAxisUpper, YAxisLower, YAxisUpper, ZAxisLower, ZAxisUpper )
