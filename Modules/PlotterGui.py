@@ -125,14 +125,14 @@ class CPlotterGui:
 		self.ButtonLoadParam.place( x = 10, y = 45 )
 
 		# button for starting to plot
-		self.ButtonPlot = tk.Button( text = "Plot", image = self.Pixel, background = "#FFFFFF", width = 192, height = 20, compound = "c" )
+		self.ButtonPlot = tk.Button( text = "Plot", image = self.Pixel, background = "#FFFFFF", width = 194, height = 20, compound = "c" )
 		self.ButtonPlot.config( command = lambda : self.ButtonUtility.ButtonPlot( self.StringFilePath.get(), int( self.StringXAxisLower.get() ), int( self.StringXAxisUpper.get() ), int( self.StringYAxisLower.get() ), int( self.StringYAxisUpper.get() ), int( self.StringZAxisLower.get() ), int( self.StringZAxisUpper.get() ), int( self.StringConvertUnit.get() ), int( self.StringSampleInterval.get() ) ) )
 		self.ButtonPlot.place( x = 10, y = 238 )
 
 		# button for closing all figures
-		self.ButtonCloseAllFigues = tk.Button( text = "Close All Figs", image = self.Pixel, background = "#FFFFFF", width = 192, height = 20, compound = "c" )
+		self.ButtonCloseAllFigues = tk.Button( text = "Close All Figs", image = self.Pixel, background = "#FFFFFF", width = 194, height = 20, compound = "c" )
 		self.ButtonCloseAllFigues.config( command = lambda : self.ButtonUtility.ButtonCloseAllFigues() )
-		self.ButtonCloseAllFigues.place( x = 220, y = 238 )
+		self.ButtonCloseAllFigues.place( x = 218, y = 238 )
 
 	def GuiMainloop( self ):
 		self.Win.mainloop()
