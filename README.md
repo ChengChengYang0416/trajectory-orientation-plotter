@@ -12,6 +12,7 @@
    - Click "Open File" button to load file for pose data
    - Click "Load Param" button to load parameters for plotting
    - Click "Plot" to plot the trajectory and the orientation
+   - Click "Close All Figs" to close all figures
    - The file path and the parameters for plotting can be modified in the entry
 
 ## Usage
@@ -19,4 +20,7 @@
   ```
   python PlotterGuiMain.py
   ```
-  ![](Figures/trajectory.png)
+- Demo
+  <div align=center><img src="Figures/trajectory.png"/></div>
+  <div align=center><img src="Figures/position.png"/></div>
+  <div align=center><img src="Figures/orientation.png"/></div>
