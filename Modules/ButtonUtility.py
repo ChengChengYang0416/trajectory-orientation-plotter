@@ -1,4 +1,5 @@
 from tkinter import filedialog
+import matplotlib.pyplot as plt
 from Modules.PlotterParametersLoader import CPlotterParametersLoader
 from Modules.PoseDataLoader import CPoseDataLoader
 from Modules.DataProcessor import CDataProcessor
@@ -60,3 +61,6 @@ class CButtonUtility:
 		# plot trajectory and orientation
 		TrajPlotter = CTrajPlotter()
 		TrajPlotter.PlotTrajectory( SampledPose, XAxisLower, XAxisUpper, YAxisLower, YAxisUpper, ZAxisLower, ZAxisUpper )
+
+	def ButtonCloseAllFigues( self ):
+		plt.close( "all" )
