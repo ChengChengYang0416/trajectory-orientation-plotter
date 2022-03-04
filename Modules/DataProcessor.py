@@ -30,6 +30,6 @@ class CDataProcessor:
 			SampledPose[ 'OrientationZZ' ].append( r.as_matrix()[ 2 ][ 2 ] )
 
 			# produce time list
-			SampledPose[ 'Time' ].append( i * 0.003 )
+			SampledPose[ 'Time' ].append( i * 0.01 )
 
 		return SampledPose
