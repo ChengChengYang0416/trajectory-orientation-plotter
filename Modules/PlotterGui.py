@@ -24,28 +24,38 @@ class CPlotterGui:
 
 	def InitFrame( self ):
 		# frame for 3D plot
-		self.Frame3DPlot = tk.LabelFrame( width = 420, height = 269, text = "3D Plot" )
+		self.Frame3DPlot = tk.LabelFrame( width = 420, height = 269, text = "3D Graph" )
 		self.Frame3DPlot.place( x = 5, y = 5 )
 
+		# frame for XYZABC states plot
+		self.FrameXYZABCStatesPlot = tk.LabelFrame( width = 420, height = 133, text = "XYZABC States Plot" )
+		self.FrameXYZABCStatesPlot.place( x = 430, y = 5 )
+
 		# frame for 2D states plot
-		self.Frame2DStatesPlot = tk.LabelFrame( width = 420, height = 172, text = "2D States Plot" )
-		self.Frame2DStatesPlot.place( x = 430, y = 5 )
+		self.Frame2DStatesPlot = tk.LabelFrame( width = 420, height = 133, text = "Joint States Plot" )
+		self.Frame2DStatesPlot.place( x = 430, y = 140 )
 
 		# frame for parameters of 3D plot
-		self.Frame3DPlotParam = tk.LabelFrame( self.Frame3DPlot, width = 410, height = 150, text = "parameters" )
+		self.Frame3DPlotParam = tk.LabelFrame( self.Frame3DPlot, width = 410, height = 150, text = "Parameters" )
 		self.Frame3DPlotParam.place( x = 3, y = 65 )
 
-		# frame for 2D states plot
-		self.Frame2DStatesParam = tk.LabelFrame( self.Frame2DStatesPlot, width = 410, height = 53, text = "parameters" )
-		self.Frame2DStatesParam.place( x = 3, y = 65 )
+		# frame for parameters of XYZABC states plot
+		self.FrameXYZABCStatesParam = tk.LabelFrame( self.FrameXYZABCStatesPlot, width = 410, height = 53, text = "Parameters" )
+		self.FrameXYZABCStatesParam.place( x = 3, y = 28 )
+
+		# frame for parameters of 2D states plot
+		self.Frame2DStatesParam = tk.LabelFrame( self.Frame2DStatesPlot, width = 410, height = 53, text = "Parameters" )
+		self.Frame2DStatesParam.place( x = 3, y = 28 )
 
 	def InitLabel( self ):
 		self.Init3DPlotLabel()
 		self.Init2DStatesPlotLabel()
+		self.InitXYZABCStatesPlotLabel()
 
 	def InitEntry( self ):
 		self.Init3DPlotEntry()
 		self.Init2DStatesPlotEntry()
+		self.InitXYZABCStatesPlotEntry()
 
 	def InitButton( self ):
 		# button object
@@ -53,6 +63,7 @@ class CPlotterGui:
 
 		self.Init3DPlotButton()
 		self.Init2DStatesPlotButton()
+		self.InitXYZABCStatesPlotButton()
 
 	def Init3DPlotLabel( self ):
 		# X axis lower bound label
@@ -88,13 +99,22 @@ class CPlotterGui:
 		self.LabelSampleInterval.place( x = 200, y = 96, width = 95, height = 28 )
 
 	def Init2DStatesPlotLabel( self ):
-		# X axis lower bound label
+		# convert unit label
 		self.Label2DStatesConvertUnit = tk.Label( self.Frame2DStatesParam, text = "ConvertUnit" )
 		self.Label2DStatesConvertUnit.place( x = 0, y = 0, width = 95, height = 28 )
 
-		# X axis upper bound label
+		# sample interval label
 		self.Label2DStatesSampleInterval = tk.Label( self.Frame2DStatesParam, text = "SampleInterval" )
 		self.Label2DStatesSampleInterval.place( x = 200, y = 0, width = 95, height = 28 )
+
+	def InitXYZABCStatesPlotLabel( self ):
+		# convert unit label
+		self.LabelXYZABCStatesConvertUnit = tk.Label( self.FrameXYZABCStatesParam, text = "ConvertUnit" )
+		self.LabelXYZABCStatesConvertUnit.place( x = 0, y = 0, width = 95, height = 28 )
+
+		# sample interval label
+		self.LabelXYZABCStatesSampleInterval = tk.Label( self.FrameXYZABCStatesParam, text = "SampleInterval" )
+		self.LabelXYZABCStatesSampleInterval.place( x = 200, y = 0, width = 95, height = 28 )
 
 	def Init3DPlotEntry( self ):
 		# txt file path entry
@@ -153,11 +173,6 @@ class CPlotterGui:
 		self.EntryJointStatesOpenFile = tk.Entry( self.Frame2DStatesPlot, textvariable = self.StringJointStatesFilePath )
 		self.EntryJointStatesOpenFile.place( x = 102, y = 2, width = 310, height = 28 )
 
-		# xml parameter file path entry
-		self.String2DStatesPlotLoadParam = tk.StringVar()
-		self.Entry2DStatesPlotLoadParam = tk.Entry( self.Frame2DStatesPlot, textvariable = self.String2DStatesPlotLoadParam )
-		self.Entry2DStatesPlotLoadParam.place( x = 102, y = 34, width = 310, height = 28 )
-
 		# convert unit entry
 		self.String2DStatesPlotConvertUnit = tk.StringVar()
 		self.Entry2DStatesPlotConvertUnit = tk.Entry( self.Frame2DStatesParam, textvariable = self.String2DStatesPlotConvertUnit )
@@ -167,6 +182,22 @@ class CPlotterGui:
 		self.String2DStatesPlotSampleInterval = tk.StringVar()
 		self.Entry2DStatesPlotSampleInterval = tk.Entry( self.Frame2DStatesParam, textvariable = self.String2DStatesPlotSampleInterval )
 		self.Entry2DStatesPlotSampleInterval.place( x = 300, y = 0, width = 100, height = 28 )
+
+	def InitXYZABCStatesPlotEntry( self ):
+		# XYZABC states txt file path entry
+		self.StringXYZABCStatesFilePath = tk.StringVar()
+		self.EntryXYZABCStatesOpenFile = tk.Entry( self.FrameXYZABCStatesPlot, textvariable = self.StringXYZABCStatesFilePath )
+		self.EntryXYZABCStatesOpenFile.place( x = 102, y = 2, width = 310, height = 28 )
+
+		# convert unit entry
+		self.StringXYZABCStatesPlotConvertUnit = tk.StringVar()
+		self.EntryXYZABCStatesPlotConvertUnit = tk.Entry( self.FrameXYZABCStatesParam, textvariable = self.StringXYZABCStatesPlotConvertUnit )
+		self.EntryXYZABCStatesPlotConvertUnit.place( x = 97, y = 0, width = 100, height = 28 )
+
+		# sample interval entry
+		self.StringXYZABCStatesPlotSampleInterval = tk.StringVar()
+		self.EntryXYZABCStatesPlotSampleInterval = tk.Entry( self.FrameXYZABCStatesParam, textvariable = self.StringXYZABCStatesPlotSampleInterval )
+		self.EntryXYZABCStatesPlotSampleInterval.place( x = 300, y = 0, width = 100, height = 28 )
 
 	def Init3DPlotButton( self ):
 		# button for open filedialog
@@ -194,20 +225,30 @@ class CPlotterGui:
 		self.ButtonJointStatesOpenFile = tk.Button( self.Frame2DStatesPlot, text = "Open Joints", image = self.Pixel, background = "#FFFFFF", width = 88, height = 20, compound = "c", command = lambda : self.ButtonUtility.ButtonOpenClick( self.EntryJointStatesOpenFile ) )
 		self.ButtonJointStatesOpenFile.place( x = 2, y = 2 )
 
-		# button for loading parameters
-		self.Button2DStatesPlotLoadParam = tk.Button( self.Frame2DStatesPlot, text = "Load Param", image = self.Pixel, background = "#FFFFFF", width = 88, height = 20, compound = "c" )
-		self.Button2DStatesPlotLoadParam.config( command = lambda : self.ButtonUtility.Button2DStatesPlotLoadParamClick( self.Entry2DStatesPlotLoadParam, self.Entry2DStatesPlotConvertUnit, self.Entry2DStatesPlotSampleInterval ) )
-		self.Button2DStatesPlotLoadParam.place( x = 2, y = 34 )
-
 		# button for starting to plot
 		self.Button2DStatesPlotPlot = tk.Button( self.Frame2DStatesPlot, text = "Plot", image = self.Pixel, background = "#FFFFFF", width = 194, height = 20, compound = "c" )
 		self.Button2DStatesPlotPlot.config( command = lambda : self.ButtonUtility.Button2DStatesPlot( self.StringJointStatesFilePath.get(), int( self.String2DStatesPlotConvertUnit.get() ), int( self.String2DStatesPlotSampleInterval.get() ) ) )
-		self.Button2DStatesPlotPlot.place( x = 2, y = 121 )
+		self.Button2DStatesPlotPlot.place( x = 2, y = 83 )
 
 		# button for closing all figures
 		self.Button2DStatesPlotCloseAllFigues = tk.Button( self.Frame2DStatesPlot, text = "Close All Figs", image = self.Pixel, background = "#FFFFFF", width = 194, height = 20, compound = "c" )
 		self.Button2DStatesPlotCloseAllFigues.config( command = lambda : self.ButtonUtility.ButtonCloseAllFigues() )
-		self.Button2DStatesPlotCloseAllFigues.place( x = 210, y = 121 )
+		self.Button2DStatesPlotCloseAllFigues.place( x = 210, y = 83 )
+
+	def InitXYZABCStatesPlotButton( self ):
+		# button for open filedialog
+		self.ButtonXYZABCStatesOpenFile = tk.Button( self.FrameXYZABCStatesPlot, text = "Open XYZABC", image = self.Pixel, background = "#FFFFFF", width = 88, height = 20, compound = "c", command = lambda : self.ButtonUtility.ButtonOpenClick( self.EntryXYZABCStatesOpenFile ) )
+		self.ButtonXYZABCStatesOpenFile.place( x = 2, y = 2 )
+
+		# button for starting to plot
+		self.ButtonXYZABCStatesPlotPlot = tk.Button( self.FrameXYZABCStatesPlot, text = "Plot", image = self.Pixel, background = "#FFFFFF", width = 194, height = 20, compound = "c" )
+		self.ButtonXYZABCStatesPlotPlot.config( command = lambda : self.ButtonUtility.ButtonXYZABCStatesPlot( self.StringXYZABCStatesFilePath.get(), int( self.StringXYZABCStatesPlotConvertUnit.get() ), int( self.StringXYZABCStatesPlotSampleInterval.get() ) ) )
+		self.ButtonXYZABCStatesPlotPlot.place( x = 2, y = 83 )
+
+		# button for closing all figures
+		self.ButtonXYZABCStatesPlotCloseAllFigues = tk.Button( self.FrameXYZABCStatesPlot, text = "Close All Figs", image = self.Pixel, background = "#FFFFFF", width = 194, height = 20, compound = "c" )
+		self.ButtonXYZABCStatesPlotCloseAllFigues.config( command = lambda : self.ButtonUtility.ButtonCloseAllFigues() )
+		self.ButtonXYZABCStatesPlotCloseAllFigues.place( x = 210, y = 83 )
 
 	def GuiMainloop( self ):
 		self.Win.mainloop()

@@ -98,5 +98,21 @@ class CButtonUtility:
 		TrajPlotter = CTrajPlotter()
 		TrajPlotter.Plot2DStates( SampledPose )
 
+	def ButtonXYZABCStatesPlot( self, FilePath, ConvertUnit, SampleInterval ):
+		# load the data from txt file
+		PoseDataLoader = CPoseDataLoader()
+		Pose = PoseDataLoader.GetPoseData( FilePath )
+
+		# convert the unit from BLU to mm
+		Pose /= ConvertUnit
+
+		# get sampled position and orientation
+		DataProcessor = CDataProcessor()
+		SampledPose = DataProcessor.GetSampledXYZABCStates( Pose, SampleInterval )
+
+		# plot trajectory and orientation
+		TrajPlotter = CTrajPlotter()
+		TrajPlotter.PlotXYZABCStates( SampledPose )
+
 	def ButtonCloseAllFigues( self ):
 		plt.close( "all" )
