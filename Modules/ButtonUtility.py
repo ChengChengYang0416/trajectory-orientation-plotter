@@ -46,6 +46,26 @@ class CButtonUtility:
 		EntrySampleInterval.delete( 0, 'end' )
 		EntrySampleInterval.insert( 0, Parameters[ 'SamplingInterval' ] )
 
+	def Button2DStatesPlotLoadParamClick( self, EntryLoadParam, EntryConvertUnit, EntrySampleInterval ):
+		# read parameter xml file path
+		Filename = filedialog.askopenfile( title = "Select a file", filetypes = ( ( "xml file", "*.xml" ), ( "all file", "*.*" ) ) )
+		if Filename is None:
+			return
+
+		EntryLoadParam.delete( 0, 'end' )
+		EntryLoadParam.insert( 0, Filename.name )
+
+		# read parameters from XML
+		ParametersFilePath = Filename.name
+		PlotterParametersLoader = CPlotterParametersLoader()
+		Parameters = PlotterParametersLoader.GetPlotterParameters( ParametersFilePath )
+
+		# fill entry with xml parameters
+		EntryConvertUnit.delete( 0, 'end' )
+		EntryConvertUnit.insert( 0, Parameters[ 'UnitConvert' ] )
+		EntrySampleInterval.delete( 0, 'end' )
+		EntrySampleInterval.insert( 0, Parameters[ 'SamplingInterval' ] )
+
 	def ButtonPlot( self, FilePath, XAxisLower, XAxisUpper, YAxisLower, YAxisUpper, ZAxisLower, ZAxisUpper, ConvertUnit, SampleInterval ):
 		# load the data from txt file
 		PoseDataLoader = CPoseDataLoader()
@@ -61,6 +81,22 @@ class CButtonUtility:
 		# plot trajectory and orientation
 		TrajPlotter = CTrajPlotter()
 		TrajPlotter.PlotTrajectory( SampledPose, XAxisLower, XAxisUpper, YAxisLower, YAxisUpper, ZAxisLower, ZAxisUpper )
+
+	def Button2DStatesPlot( self, FilePath, ConvertUnit, SampleInterval ):
+		# load the data from txt file
+		PoseDataLoader = CPoseDataLoader()
+		Pose = PoseDataLoader.GetPoseData( FilePath )
+
+		# convert the unit from BLU to mm
+		Pose /= ConvertUnit
+
+		# get sampled position and orientation
+		DataProcessor = CDataProcessor()
+		SampledPose = DataProcessor.GetSampledJointStates( Pose, SampleInterval )
+
+		# plot trajectory and orientation
+		TrajPlotter = CTrajPlotter()
+		TrajPlotter.Plot2DStates( SampledPose )
 
 	def ButtonCloseAllFigues( self ):
 		plt.close( "all" )

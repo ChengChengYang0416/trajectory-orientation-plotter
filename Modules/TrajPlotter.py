@@ -70,3 +70,56 @@ class CTrajPlotter:
 
 		# plot
 		plt.show()
+
+	def Plot2DStates( self, Pose ):
+		
+
+		# plot joint states
+		FigJointStates, ( AxJoint1, AxJoint2, AxJoint3, AxJoint4, AxJoint5, AxJoint6 ) = plt.subplots( 6, 1 )
+		FigJointStates.set_figwidth( 8 )
+		FigJointStates.set_figheight( 6 )
+
+		AxJoint1.set_title( "Joint States" )
+		AxJoint1.plot( Pose[ 'Time' ], Pose[ 'Joint1' ] )
+		AxJoint1.grid()
+		AxJoint1.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxJoint1.set( ylabel = "Joint1 ($^\circ$)" )
+		AxJoint1.yaxis.set_label_coords( -.1, .5 )
+		AxJoint1.axes.xaxis.set_ticklabels( [] )
+
+		AxJoint2.plot( Pose[ 'Time' ], Pose[ 'Joint2' ] )
+		AxJoint2.grid()
+		AxJoint2.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxJoint2.set( ylabel = "Joint2 ($^\circ$)" )
+		AxJoint2.yaxis.set_label_coords( -.1, .5 )
+		AxJoint2.axes.xaxis.set_ticklabels( [] )
+
+		AxJoint3.plot( Pose[ 'Time' ], Pose[ 'Joint3' ] )
+		AxJoint3.grid()
+		AxJoint3.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxJoint3.set( ylabel = "Joint3 ($^\circ$)" )
+		AxJoint3.yaxis.set_label_coords( -.1, .5 )
+		AxJoint3.axes.xaxis.set_ticklabels( [] )
+
+		AxJoint4.plot( Pose[ 'Time' ], Pose[ 'Joint4' ] )
+		AxJoint4.grid()
+		AxJoint4.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxJoint4.set( ylabel = "Joint4 ($^\circ$)" )
+		AxJoint4.yaxis.set_label_coords( -.1, .5 )
+		AxJoint4.axes.xaxis.set_ticklabels( [] )
+
+		AxJoint5.plot( Pose[ 'Time' ], Pose[ 'Joint5' ] )
+		AxJoint5.grid()
+		AxJoint5.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxJoint5.set( ylabel = "Joint5 ($^\circ$)" )
+		AxJoint5.yaxis.set_label_coords( -.1, .5 )
+		AxJoint5.axes.xaxis.set_ticklabels( [] )
+
+		AxJoint6.plot( Pose[ 'Time' ], Pose[ 'Joint6' ] )
+		AxJoint6.grid()
+		AxJoint6.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxJoint6.set( ylabel = "Joint6 ($^\circ$)", xlabel = "Time (sec)" )
+		AxJoint6.yaxis.set_label_coords( -.1, .5 )
+
+		# plot
+		plt.show()

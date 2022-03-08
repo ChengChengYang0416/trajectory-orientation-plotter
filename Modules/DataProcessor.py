@@ -33,3 +33,22 @@ class CDataProcessor:
 			SampledPose[ 'Time' ].append( i * 0.01 )
 
 		return SampledPose
+
+	def GetSampledJointStates( self, Pose, SamplingInterval ):
+		# dictionary of sampled position and orientation
+		SampledPose = { 'Joint1' : [], 'Joint2' : [], 'Joint3' : [], 'Joint4' : [], 'Joint5' : [], 'Joint6' : [], 'Time' : [] }
+
+		# get sampled position and orientation
+		for i in range( 0, len( Pose[ 0 ] ), SamplingInterval ):
+			# get joint states
+			SampledPose[ 'Joint1' ].append( Pose[ 0 ][ i ] )
+			SampledPose[ 'Joint2' ].append( Pose[ 1 ][ i ] )
+			SampledPose[ 'Joint3' ].append( Pose[ 2 ][ i ] )
+			SampledPose[ 'Joint4' ].append( Pose[ 3 ][ i ] )
+			SampledPose[ 'Joint5' ].append( Pose[ 4 ][ i ] )
+			SampledPose[ 'Joint6' ].append( Pose[ 5 ][ i ] )
+
+			# produce time list
+			SampledPose[ 'Time' ].append( i * 0.01 )
+
+		return SampledPose
