@@ -53,7 +53,7 @@ class CPlotterGui:
 		self.ButtonCreateXYZABCPlotWindow.place( x = 35, y = 5 )
 
 	def InitJointsPlotWindowButton( self ):
-		self.ButtonCreateJointsPlotWindow = tk.Button( self.FrameJointsPlot, text = "Plot Joints graph", image = self.Pixel, background = "#FFFFFF", width = 120, height = 20, compound = "c" )
+		self.ButtonCreateJointsPlotWindow = tk.Button( self.FrameJointsPlot, text = "Plot Joints graph", image = self.Pixel, background = "#FFFFFF", width = 120, height = 20, compound = "c", command = lambda : self.ButtonUtilityMainWin.ButtonCreateJointsPlotWindowClick( self.Win ) )
 		self.ButtonCreateJointsPlotWindow.place( x = 35, y = 5 )
 
 	def GuiMainloop( self ):
