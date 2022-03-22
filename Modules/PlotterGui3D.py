@@ -10,14 +10,6 @@ class CPlotterGui3D:
 		self.InitEntry()
 		self.InitButton()
 
-	def Init3DPlotWindow( self, PlotWindow ):
-		self.Win = PlotWindow
-		self.InitBasicSetting()
-		self.InitFrame()
-		self.InitLabel()
-		self.InitEntry()
-		self.InitButton()
-
 	def InitBasicSetting( self ):
 		# set title
 		self.Win.title( "Plotter Gui 3D" )

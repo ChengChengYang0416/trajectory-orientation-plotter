@@ -49,7 +49,7 @@ class CPlotterGui:
 		self.ButtonCreate3DPlotWindow.place( x = 35, y = 5 )
 
 	def InitXYZABCPlotWindowButton( self ):
-		self.ButtonCreateXYZABCPlotWindow = tk.Button( self.FrameXYZABCPlot, text = "Plot XYZABC graph", image = self.Pixel, background = "#FFFFFF", width = 120, height = 20, compound = "c" )
+		self.ButtonCreateXYZABCPlotWindow = tk.Button( self.FrameXYZABCPlot, text = "Plot XYZABC graph", image = self.Pixel, background = "#FFFFFF", width = 120, height = 20, compound = "c", command = lambda : self.ButtonUtilityMainWin.ButtonCreateXYZABCPlotWindowClick( self.Win ) )
 		self.ButtonCreateXYZABCPlotWindow.place( x = 35, y = 5 )
 
 	def InitJointsPlotWindowButton( self ):
