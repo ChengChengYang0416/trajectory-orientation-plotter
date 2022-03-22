@@ -62,22 +62,6 @@ class CButtonUtility:
 		TrajPlotter = CTrajPlotter()
 		TrajPlotter.PlotTrajectory( SampledPose, XAxisLower, XAxisUpper, YAxisLower, YAxisUpper, ZAxisLower, ZAxisUpper )
 
-	def Button2DStatesPlot( self, FilePath, ConvertUnit, SampleInterval ):
-		# load the data from txt file
-		PoseDataLoader = CPoseDataLoader()
-		Pose = PoseDataLoader.GetPoseData( FilePath )
-
-		# convert the unit from BLU to mm
-		Pose /= ConvertUnit
-
-		# get sampled position and orientation
-		DataProcessor = CDataProcessor()
-		SampledPose = DataProcessor.GetSampledJointStates( Pose, SampleInterval )
-
-		# plot trajectory and orientation
-		TrajPlotter = CTrajPlotter()
-		TrajPlotter.Plot2DStates( SampledPose )
-
 	def ButtonXYZABCStatesPlot( self, FilePath, ConvertUnit, SampleInterval ):
 		# load the data from txt file
 		PoseDataLoader = CPoseDataLoader()
@@ -93,6 +77,22 @@ class CButtonUtility:
 		# plot trajectory and orientation
 		TrajPlotter = CTrajPlotter()
 		TrajPlotter.PlotXYZABCStates( SampledPose )
+
+	def ButtonJointStatesPlot( self, FilePath, ConvertUnit, SampleInterval ):
+		# load the data from txt file
+		PoseDataLoader = CPoseDataLoader()
+		Pose = PoseDataLoader.GetPoseData( FilePath )
+
+		# convert the unit from BLU to mm
+		Pose /= ConvertUnit
+
+		# get sampled position and orientation
+		DataProcessor = CDataProcessor()
+		SampledPose = DataProcessor.GetSampledJointStates( Pose, SampleInterval )
+
+		# plot trajectory and orientation
+		TrajPlotter = CTrajPlotter()
+		TrajPlotter.PlotJointStates( SampledPose )
 
 	def ButtonCloseAllFigues( self ):
 		plt.close( "all" )

@@ -29,7 +29,53 @@ class CTrajPlotter:
 		# plot
 		plt.show()
 
-	def Plot2DStates( self, Pose ):
+	def PlotXYZABCStates( self, Pose ):
+		# plot position
+		FigPosition, ( AxX, AxY, AxZ ) = plt.subplots( 3, 1 )
+		AxX.set_title( "Position" )
+		AxX.plot( Pose[ 'Time' ], Pose[ 'X' ] )
+		AxX.grid()
+		AxX.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxX.set( ylabel = "X (mm)" )
+		AxX.yaxis.set_label_coords( -.1, .5 )
+
+		AxY.plot( Pose[ 'Time' ], Pose[ 'Y' ] )
+		AxY.grid()
+		AxY.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxY.set( ylabel = "Y (mm)" )
+		AxY.yaxis.set_label_coords( -.1, .5 )
+
+		AxZ.plot( Pose[ 'Time' ], Pose[ 'Z' ] )
+		AxZ.grid()
+		AxZ.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxZ.set( ylabel = "Z (mm)", xlabel = "Time (sec)" )
+		AxZ.yaxis.set_label_coords( -.1, .5 )
+
+		# plot orientation
+		FigOrientation, ( AxA, AxB, AxC ) = plt.subplots( 3, 1 )
+		AxA.set_title( "Orientation" )
+		AxA.plot( Pose[ 'Time' ], Pose[ 'A' ] )
+		AxA.grid()
+		AxA.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxA.set( ylabel = "A ($^\circ$)" )
+		AxA.yaxis.set_label_coords( -.1, .5 )
+
+		AxB.plot( Pose[ 'Time' ], Pose[ 'B' ] )
+		AxB.grid()
+		AxB.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxB.set( ylabel = "B ($^\circ$)" )
+		AxB.yaxis.set_label_coords( -.1, .5 )
+
+		AxC.plot( Pose[ 'Time' ], Pose[ 'C' ] )
+		AxC.grid()
+		AxC.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
+		AxC.set( ylabel = "C ($^\circ$)", xlabel = "Time (sec)" )
+		AxC.yaxis.set_label_coords( -.1, .5 )
+
+		# plot
+		plt.show()
+
+	def PlotJointStates( self, Pose ):
 		# plot joint states
 		FigJointStates, ( AxJoint1, AxJoint2, AxJoint3, AxJoint4, AxJoint5, AxJoint6 ) = plt.subplots( 6, 1 )
 		FigJointStates.set_figwidth( 8 )
@@ -76,52 +122,6 @@ class CTrajPlotter:
 		AxJoint6.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
 		AxJoint6.set( ylabel = "Joint6 ($^\circ$)", xlabel = "Time (sec)" )
 		AxJoint6.yaxis.set_label_coords( -.1, .5 )
-
-		# plot
-		plt.show()
-
-	def PlotXYZABCStates( self, Pose ):
-		# plot position
-		FigPosition, ( AxX, AxY, AxZ ) = plt.subplots( 3, 1 )
-		AxX.set_title( "Position" )
-		AxX.plot( Pose[ 'Time' ], Pose[ 'X' ] )
-		AxX.grid()
-		AxX.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
-		AxX.set( ylabel = "X (mm)" )
-		AxX.yaxis.set_label_coords( -.1, .5 )
-
-		AxY.plot( Pose[ 'Time' ], Pose[ 'Y' ] )
-		AxY.grid()
-		AxY.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
-		AxY.set( ylabel = "Y (mm)" )
-		AxY.yaxis.set_label_coords( -.1, .5 )
-
-		AxZ.plot( Pose[ 'Time' ], Pose[ 'Z' ] )
-		AxZ.grid()
-		AxZ.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
-		AxZ.set( ylabel = "Z (mm)", xlabel = "Time (sec)" )
-		AxZ.yaxis.set_label_coords( -.1, .5 )
-
-		# plot orientation
-		FigOrientation, ( AxA, AxB, AxC ) = plt.subplots( 3, 1 )
-		AxA.set_title( "Orientation" )
-		AxA.plot( Pose[ 'Time' ], Pose[ 'A' ] )
-		AxA.grid()
-		AxA.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
-		AxA.set( ylabel = "A ($^\circ$)" )
-		AxA.yaxis.set_label_coords( -.1, .5 )
-
-		AxB.plot( Pose[ 'Time' ], Pose[ 'B' ] )
-		AxB.grid()
-		AxB.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
-		AxB.set( ylabel = "B ($^\circ$)" )
-		AxB.yaxis.set_label_coords( -.1, .5 )
-
-		AxC.plot( Pose[ 'Time' ], Pose[ 'C' ] )
-		AxC.grid()
-		AxC.set_xlim( [ 0, Pose[ 'Time' ][ -1 ] ] )
-		AxC.set( ylabel = "C ($^\circ$)", xlabel = "Time (sec)" )
-		AxC.yaxis.set_label_coords( -.1, .5 )
 
 		# plot
 		plt.show()
