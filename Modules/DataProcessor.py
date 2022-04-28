@@ -18,7 +18,7 @@ class CDataProcessor:
 			SampledPose[ 'C' ].append( Pose[ 5 ][ i ] )
 
 			# get orientation by rotation matrix
-			r = R.from_euler( 'zyx', [ Pose[ 3 ][ i ], Pose[ 4 ][ i ], Pose[ 5 ][ i ] ], degrees = True )
+			r = R.from_euler( 'zyx', [ Pose[ 5 ][ i ], Pose[ 4 ][ i ], Pose[ 3 ][ i ] ], degrees = True )
 			SampledPose[ 'OrientationXX' ].append( r.as_matrix()[ 0 ][ 0 ] )
 			SampledPose[ 'OrientationXY' ].append( r.as_matrix()[ 1 ][ 0 ] )
 			SampledPose[ 'OrientationXZ' ].append( r.as_matrix()[ 2 ][ 0 ] )
